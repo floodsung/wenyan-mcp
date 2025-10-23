@@ -23,7 +23,8 @@ https://github.com/user-attachments/assets/2c355f76-f313-48a7-9c31-f0f69e5ec207
 
 - 列出并选择支持的文章主题
 - 使用内置主题对 Markdown 内容排版
-- 发布文章到微信公众号草稿箱（支持直接传入内容或文件路径）
+- 发布 Markdown 文章到微信公众号草稿箱
+- 发布图片消息（图片画廊）到微信公众号草稿箱
 - 自动上传本地或网络图片
 
 ## 主题效果
@@ -216,33 +217,43 @@ cover: /Users/lei/Downloads/result_image.jpg
 
 文颜 MCP Server 提供以下工具：
 
-### 1. `publish_article`
-发布 Markdown 内容到微信公众号草稿箱。
-
-**参数：**
-- `content` (必需): Markdown 格式的文章内容，需包含 frontmatter
-- `theme_id` (可选): 主题 ID，如 `pie`, `lapis`, `default` 等
-
-**使用示例：**
-```typescript
-{
-  "content": "---\ntitle: 文章标题\ncover: /path/to/cover.jpg\n---\n\n# 文章内容...",
-  "theme_id": "pie"
-}
-```
-
-### 2. `publish_article_from_file`
+### 1. `publish_article_from_file`
 从文件路径读取 Markdown 文件并发布到微信公众号草稿箱。
 
 **参数：**
 - `file_path` (必需): Markdown 文件的绝对路径
 - `theme_id` (可选): 主题 ID，如 `pie`, `lapis`, `default` 等
+- `author` (可选): 作者名称，默认为 "Flood Sung"
 
 **使用示例：**
 ```typescript
 {
   "file_path": "/Users/username/Documents/my-article.md",
-  "theme_id": "pie"
+  "theme_id": "pie",
+  "author": "Your Name"
+}
+```
+
+### 2. `publish_image_message`
+发布图片消息（图片画廊）到微信公众号草稿箱。
+
+**参数：**
+- `title` (必需): 消息标题
+- `content` (必需): 消息描述/说明文字（最多 20,000 字符）
+- `image_paths` (必需): 图片路径数组（本地绝对路径或 URL），最少 1 张，最多 20 张
+- `need_open_comment` (可选): 是否开启评论，默认 true
+- `only_fans_can_comment` (可选): 是否仅粉丝可评论，默认 false
+
+**使用示例：**
+```typescript
+{
+  "title": "今日图集",
+  "content": "分享一些精彩瞬间",
+  "image_paths": [
+    "/Users/username/Pictures/photo1.jpg",
+    "/Users/username/Pictures/photo2.jpg",
+    "https://example.com/photo3.jpg"
+  ]
 }
 ```
 
