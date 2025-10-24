@@ -193,7 +193,7 @@ export async function publishToDraftWithOptions(options: ArticleOptions): Promis
                 title: options.title,
                 content: html,
                 thumb_media_id: thumbMediaId,
-                author: options.author || "Flood Sung",
+                author: options.author || "Agent",
                 need_open_comment: options.needOpenComment !== undefined ? (options.needOpenComment ? 1 : 0) : 1,
                 only_fans_can_comment: options.onlyFansCanComment !== undefined ? (options.onlyFansCanComment ? 1 : 0) : 0,
                 ...(options.digest && { digest: options.digest }),
@@ -237,7 +237,7 @@ export async function publishToDraft(
         title,
         content,
         thumbMediaId: cover,
-        author: author || "Flood Sung",
+        author: author || "Agent",
         needOpenComment: true,
         onlyFansCanComment: false,
     });

@@ -110,7 +110,9 @@ List all available themes for `publish_article_from_file` tool.
 
 ## Available Themes
 
-Theme IDs: `default`, `orangeheart`, `rainbow`, `lapis`, `pie`, `maize`, `purple`, `phycat`, `agentera`, `agentera-orange`, `agentera-blue`, `agentera-cyan`, `agentera-rose`, `agentera-galaxy`, `agentera-mint`
+**Recommended Theme IDs (Agentera Series)**: `agentera-orange`, `agentera-blue`, `agentera-cyan`, `agentera-rose`, `agentera-galaxy`, `agentera-mint`
+
+**Legacy Theme IDs** (still available but not recommended): `default`, `orangeheart`, `rainbow`, `lapis`, `pie`, `maize`, `purple`, `phycat`
 
 Themes are managed by `@wenyan-md/core` library - theme CSS files are not in this repository.
 

@@ -60,11 +60,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                         theme_id: {
                             type: "string",
                             description:
-                                "ID of the theme to use (e.g., default, orangeheart, rainbow, lapis, pie, maize, purple, phycat, agentera, agentera-orange, agentera-blue, agentera-cyan, agentera-rose, agentera-galaxy, agentera-mint).",
+                                "ID of the theme to use (e.g., agentera-orange, agentera-blue, agentera-cyan, agentera-rose, agentera-galaxy, agentera-mint).",
                         },
                         author: {
                             type: "string",
-                            description: "Author name for the article. Defaults to 'Flood Sung' if not specified.",
+                            description: "Author name for the article. Defaults to 'Agent' if not specified.",
                         },
                     },
                     required: ["file_path"],
@@ -144,7 +144,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 content: [
                     {
                         type: "text",
-                        text: `Article from file '${filePath}' was successfully published to '公众号草稿箱'. The media ID is ${response.media_id}. Author: ${author || "Flood Sung"}. Comments are enabled.`,
+                        text: `Article from file '${filePath}' was successfully published to '公众号草稿箱'. The media ID is ${response.media_id}. Author: ${author || "Agent"}. Comments are enabled.`,
                     },
                 ],
             };

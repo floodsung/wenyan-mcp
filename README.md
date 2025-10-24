@@ -223,7 +223,7 @@ cover: /Users/lei/Downloads/result_image.jpg
 **参数：**
 - `file_path` (必需): Markdown 文件的绝对路径
 - `theme_id` (可选): 主题 ID，如 `pie`, `lapis`, `default` 等
-- `author` (可选): 作者名称，默认为 "Flood Sung"
+- `author` (可选): 作者名称，默认为 "Agent"
 
 **使用示例：**
 ```typescript
