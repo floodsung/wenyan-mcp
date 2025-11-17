@@ -1,0 +1,601 @@
+const n = `/*
+ *     Typora Theme - AgentEra Galaxy    /    Author - agent时代公众号
+ *     Modern Tech Light Theme for AI Era with Deep Blue Galaxy Headings
+ */
+
+:root {
+    /* Primary Tech Colors - Light Mode (Galaxy Blue System) */
+    --tech-primary: #667eea;
+    --tech-secondary: #764ba2;
+    --tech-accent: #7b68ee;
+    --tech-gradient-1: #667eea;
+    --tech-gradient-2: #764ba2;
+    --tech-neon: #9370db;
+
+    /* Light Mode Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #f1f3f5;
+    --bg-gradient: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+
+    /* Gradient Overlays */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-tech: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    --gradient-neon: linear-gradient(135deg, #9370db 0%, #764ba2 100%);
+    --gradient-purple: linear-gradient(135deg, #7b68ee 0%, #667eea 100%);
+
+    /* Border & Shadow */
+    --border-tech: 1px solid rgba(102, 126, 234, 0.2);
+    --shadow-primary: 0 4px 12px rgba(102, 126, 234, 0.15);
+    --shadow-tech: 0 2px 8px rgba(102, 126, 234, 0.1);
+    --glow-heading: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+#wenyan {
+    font-family: var(--sans-serif-font);
+    line-height: 1.8;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+    font-size: 16px;
+    background: var(--bg-primary);
+    position: relative;
+    padding: 12px;
+}
+
+/* Subtle tech pattern background */
+#wenyan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#wenyan p,
+#wenyan pre {
+    margin: 1.2em 0.4em;
+    position: relative;
+    z-index: 1;
+}
+
+#wenyan p {
+    word-spacing: 0.05rem;
+    text-align: justify;
+    color: var(--text-secondary);
+}
+
+#wenyan a {
+    word-wrap: break-word;
+    color: var(--tech-primary);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+    padding: 0 2px;
+    font-weight: 600;
+    position: relative;
+}
+
+#wenyan a::after {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#wenyan a:hover::after {
+    opacity: 1;
+    right: -20px;
+}
+
+#wenyan h1,
+#wenyan h2,
+#wenyan h3,
+#wenyan h4,
+#wenyan h5,
+#wenyan h6 {
+    position: relative;
+    margin: 1.8em 0 1.2em;
+    padding: 0px;
+    font-weight: 800;
+    cursor: text;
+    z-index: 1;
+}
+
+/* H1 - Ultra Modern with 3D Effect */
+#wenyan h1 {
+    font-size: 2em;
+    text-align: center;
+    padding: 28px 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    filter: drop-shadow(var(--glow-heading));
+}
+
+#wenyan h1::before {
+    content: '⚡';
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+#wenyan h1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: var(--gradient-tech);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+/* H2 - Glowing Box Style */
+#wenyan h2 {
+    padding: 16px 24px;
+    margin: 2.5em 0 1.5em;
+    font-size: 1.5em;
+    background: var(--bg-card);
+    border-left: 6px solid transparent;
+    border-image: var(--gradient-tech) 1;
+    box-shadow: var(--shadow-primary);
+    border-radius: 0 12px 12px 0;
+    background: linear-gradient(90deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+#wenyan h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--gradient-tech);
+}
+
+#wenyan h2::after {
+    content: '▸▸';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.2em;
+}
+
+#wenyan h2 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* H3 - Neon Underline Style */
+#wenyan h3 {
+    font-size: 1.35em;
+    padding-bottom: 12px;
+    border-bottom: 3px solid transparent;
+    border-image: var(--gradient-purple) 1;
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+#wenyan h3::before {
+    content: '◆';
+    display: inline-block;
+    margin-right: 12px;
+    background: var(--gradient-purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 0.9em;
+    animation: rotate 3s linear infinite;
+}
+
+#wenyan h3 {
+    background: var(--gradient-purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* H4 - Bracket Style */
+#wenyan h4 {
+    font-size: 1.25em;
+    position: relative;
+    padding-left: 24px;
+    color: var(--tech-primary);
+}
+
+#wenyan h4::before {
+    content: '[';
+    position: absolute;
+    left: 0;
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#wenyan h4::after {
+    content: ']';
+    margin-left: 8px;
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+/* H5 - Dot Matrix Style */
+#wenyan h5 {
+    font-size: 1.15em;
+    padding-left: 20px;
+    position: relative;
+}
+
+#wenyan h5::before {
+    content: '●●●';
+    position: absolute;
+    left: 0;
+    font-size: 0.4em;
+    letter-spacing: 2px;
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#wenyan h6 {
+    font-size: 1.1em;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-style: italic;
+}
+
+#wenyan li > ol,
+#wenyan li > ul {
+    margin: 0;
+}
+
+/* HR - Tech Divider */
+#wenyan hr {
+    box-sizing: content-box;
+    width: 100%;
+    height: 3px;
+    padding: 0;
+    margin: 48px auto;
+    overflow: hidden;
+    background: var(--gradient-tech);
+    border: 0;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+}
+
+#wenyan hr::before {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-primary);
+    padding: 4px 12px;
+    color: var(--tech-primary);
+    font-size: 0.8em;
+}
+
+/* Blockquote - Clean Card Style */
+#wenyan blockquote {
+    position: relative;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 0.98em;
+    font-style: normal;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    text-indent: 0;
+    border: none;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-left: 4px solid transparent;
+    border-image: var(--gradient-tech) 1;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.08);
+}
+
+#wenyan blockquote p {
+    margin: 0.6em 0;
+}
+
+#wenyan blockquote p:first-child {
+    margin-top: 0;
+}
+
+#wenyan blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Nested blockquote styling */
+#wenyan blockquote blockquote {
+    margin: 12px 0;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.5);
+    border-image: var(--gradient-purple) 1;
+}
+
+/* Table - Modern Grid */
+#wenyan table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2em auto;
+    max-width: 100%;
+    table-layout: fixed;
+    text-align: left;
+    overflow: hidden;
+    display: table;
+    word-wrap: break-word;
+    word-break: break-all;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-primary);
+    border: 1px solid var(--bg-card);
+}
+
+#wenyan table td,
+#wenyan table th {
+    font-size: 0.9em;
+    padding: 14px 18px;
+    line-height: 1.6;
+    vertical-align: top;
+    border-bottom: 1px solid var(--bg-card);
+}
+
+#wenyan table th {
+    font-weight: 700;
+    color: var(--tech-primary);
+    background: var(--bg-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85em;
+    border-bottom: 3px solid transparent;
+    border-image: var(--gradient-tech) 1;
+}
+
+#wenyan table tr:hover {
+    background: var(--bg-secondary);
+    transition: background 0.2s ease;
+}
+
+#wenyan table tr:last-child td {
+    border-bottom: none;
+}
+
+#wenyan strong {
+    padding: 0 2px;
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+#wenyan em {
+    padding: 0 4px;
+    color: var(--tech-accent);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Inline Code - Chip Style */
+#wenyan p code {
+    padding: 4px 10px;
+    margin: 0 4px;
+    font-family: var(--monospace-font);
+    font-size: 0.88em;
+    color: var(--tech-primary);
+    background: var(--bg-card);
+    border: 1.5px solid rgba(102, 126, 234, 0.2);
+    border-radius: 6px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.08);
+}
+
+#wenyan .footnote {
+    color: var(--tech-primary);
+    background: var(--bg-card);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+#wenyan img {
+    max-width: 100%;
+    display: block;
+    margin: 24px auto;
+    border-radius: 12px;
+    border: 3px solid var(--bg-card);
+    box-shadow: var(--shadow-primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#wenyan img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+}
+
+/* Code Block - Terminal Style */
+#wenyan pre {
+    border-radius: 12px;
+    line-height: 1.8;
+    margin: 2em 0.25em;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--bg-card);
+    box-shadow: var(--shadow-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+#wenyan pre::before {
+    content: '◉ ◉ ◉';
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 0.7em;
+    letter-spacing: 6px;
+    color: var(--text-muted);
+}
+
+#wenyan pre::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--bg-card), transparent);
+    pointer-events: none;
+}
+
+#wenyan pre code {
+    display: block;
+    overflow-x: auto;
+    padding: 24px 16px 8px;
+    font-family: var(--monospace-font);
+    font-size: 0.9em;
+    color: var(--text-primary);
+}
+
+#wenyan #footnotes p {
+    display: flex;
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+#wenyan .footnote-num {
+    display: inline;
+    width: 10%;
+    color: var(--tech-primary);
+    font-weight: bold;
+}
+
+#wenyan .footnote-txt {
+    display: inline;
+    width: 90%;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* Lists - Custom Bullets */
+#wenyan ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#wenyan ul li {
+    position: relative;
+    padding-left: 32px;
+    margin: 10px 0;
+}
+
+#wenyan ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 10px;
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#wenyan ol {
+    counter-reset: custom-counter;
+    list-style: none;
+    padding-left: 0;
+}
+
+#wenyan ol li {
+    position: relative;
+    padding-left: 40px;
+    margin: 10px 0;
+    counter-increment: custom-counter;
+}
+
+#wenyan ol li::before {
+    content: counter(custom-counter);
+    position: absolute;
+    left: 8px;
+    width: 24px;
+    height: 24px;
+    background: var(--gradient-tech);
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.25);
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.7; transform: translateX(-50%) scale(1.1); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+`;
+export {
+  n as default
+};

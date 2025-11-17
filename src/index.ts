@@ -15,10 +15,11 @@ import {
     CallToolRequestSchema,
     ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { getGzhContent } from "@wenyan-md/core/wrapper";
 import { publishToDraft, publishImageMessageToDraft } from "./customPublish.js";
 import { themes, Theme } from "@wenyan-md/core/theme";
 import { readFile } from "fs/promises";
+import { getAllLocalThemes, isLocalTheme, getLocalTheme } from "./themes.js";
+import { getGzhContent } from "./customWrapper.js";
 
 /**
  * Create an MCP server with capabilities for resources (to list/read notes),
@@ -152,16 +153,29 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             throw new Error(`Failed to read or publish file: ${error instanceof Error ? error.message : String(error)}`);
         }
     } else if (request.params.name === "list_themes") {
-        const themeResources = Object.entries(themes).map(([id, theme]: [string, Theme]) => ({
+        // Combine themes from @wenyan-md/core and local themes
+        const coreThemes = Object.entries(themes).map(([id, theme]: [string, Theme]) => ({
             type: "text",
             text: JSON.stringify({
                 id: theme.id,
                 name: theme.name,
-                description: theme.description
+                description: theme.description,
+                source: "core"
             }),
         }));
+
+        const localThemesList = getAllLocalThemes().map((theme: Theme) => ({
+            type: "text",
+            text: JSON.stringify({
+                id: theme.id,
+                name: theme.name,
+                description: theme.description,
+                source: "local"
+            }),
+        }));
+
         return {
-            content: themeResources,
+            content: [...localThemesList, ...coreThemes],
         };
     } else if (request.params.name === "publish_image_message") {
         const title = String(request.params.arguments?.title || "");

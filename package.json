@@ -30,7 +30,7 @@
     "url": "https://github.com/caol64/wenyan-mcp/issues"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && mkdir -p dist/themes && cp -r src/themes/*.js dist/themes/",
     "watch": "tsc --watch",
     "inspector": "pnpm build && node ./run-inspector.js",
     "test": "pnpx vitest run",

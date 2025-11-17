@@ -50,12 +50,27 @@ npm run prepublishOnly
 
 1. **src/index.ts** - Main MCP server entry point
    - Implements MCP Server using `@modelcontextprotocol/sdk`
-   - Exposes three tools: `publish_article`, `publish_article_from_file`, `list_themes`
+   - Exposes three tools: `publish_article_from_file`, `publish_image_message`, `list_themes`
    - Uses stdio transport for communication with MCP clients
-   - Delegates to `@wenyan-md/core` for markdown processing and theme application
+   - Uses `customWrapper.ts` for markdown processing with local and core themes
    - Calls `customPublish.ts` for WeChat API integration
 
-2. **src/customPublish.ts** - WeChat publishing logic
+2. **src/themes.ts** - Local theme management
+   - Defines and exports all Agentera theme series
+   - Provides helper functions: `getAllLocalThemes()`, `isLocalTheme()`, `getLocalTheme()`
+   - Local themes take priority over core themes
+
+3. **src/themes/** - Agentera theme CSS files
+   - Contains all Agentera theme implementations (agentera-orange, agentera-blue, etc.)
+   - These files are copied to `dist/themes/` during build
+   - Committed to git to ensure availability after clone
+
+4. **src/customWrapper.ts** - Theme processing wrapper
+   - Extends `@wenyan-md/core/wrapper` to support local themes
+   - Falls back to core themes for non-local theme IDs
+   - Handles CSS injection for local themes
+
+5. **src/customPublish.ts** - WeChat publishing logic
    - Handles WeChat API authentication (access token fetching)
    - Uploads images to WeChat (supports local paths and URLs)
    - Processes HTML content and replaces image sources with WeChat media URLs
@@ -66,7 +81,10 @@ npm run prepublishOnly
 ### Key Architecture Patterns
 
 - **MCP Tool Pattern**: Tools are registered via `setRequestHandler(ListToolsRequestSchema)` and executed via `setRequestHandler(CallToolRequestSchema)`
-- **Theme System**: Themes are imported from `@wenyan-md/core/theme` - the core library manages theme CSS and markdown rendering
+- **Hybrid Theme System**:
+  - Local themes (Agentera series) are stored in `src/themes/` and managed by `themes.ts`
+  - Core themes from `@wenyan-md/core/theme` are still available as fallback
+  - `customWrapper.ts` intelligently routes to local or core themes
 - **Image Upload Flow**:
   1. Parse HTML content for `<img>` tags
   2. Upload images to WeChat (skip if already hosted on `mmbiz.qpic.cn`)
